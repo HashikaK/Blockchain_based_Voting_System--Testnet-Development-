@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To Do Decentralized Application</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.1.umd.min.js" type="application/javascript"></script>
+    <script src="main.js"></script>
+    <style>
+		*{
+			background-color: beige;
+		}
+		button {
+			background-color: #239a8e;
+			color: whitesmoke;
+			padding: 12px 24px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: bold;
+			display: block;
+			margin: 50px auto 0;
+		}
+
+		button:hover {
+			background-color: #a53bcc;
+		}
+
+		/* Paragraph styles */
+		p {
+			text-align: center;
+			font-size: 25px;
+			margin-top: 50px;
+		}
+
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 50px;
+		}
+		
+		input[type=text], select {
+			width: 30%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+		
+        input[type=number], select {
+			width: 30%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+		
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			margin-top: 50px;
+			font-size: 30px;
+			font-family: 'Times New Roman', Times, serif;
+		}
+		
+		span {
+			display: block;
+			margin-bottom: 10px;
+		}
+
+/* Style the navigation bar */
+		.navbar {
+			overflow: hidden;
+			background-color: #333;
+			font-family: Arial;
+			color:#64239a;
+		}
+
+		/* Style the links inside the navigation bar */
+		.navbar a {
+			float: left;
+			display: block;
+			color: black;
+			text-align: center;
+			padding: 14px 20px;
+			text-decoration: none;
+		
+		}
+
+		/* Change the color of links on hover */
+		.navbar a:hover {
+			background-color: #239a8e;
+			color: black;
+		}
+
+		
+        #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        }
+
+        #myTable th,
+        #myTable td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+        }
+
+        #myTable th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        }
+
+	</style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/index.html">Vote</a>
+        <a href="/ListVoters.html">List Voters</a>
+    </div>
+
+    <div class="container">Welcome to the Decentralized Voting Application</div>
+
+    <div>
+        <button onclick="connectMetamask()">Connect Metamask</button>
+        <p id="metamasknotification"></p>
+    </div>
+
+    <div class="container">
+        <span>Vote here</span>
+        <input type="number" id="vote" placeholder="Add Index of the Voter ...">
+        <button onclick="addVote()">Add Vote</button>
+        <p id="cand"></p>
+	</div>
+	<script>
+        async function connectMetamask() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Request account access
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    document.getElementById('metamasknotification').innerText = 'MetaMask is connected';
+                } catch (error) {
+                    console.error('User rejected the request');
+                    document.getElementById('metamasknotification').innerText = 'User rejected the request';
+                }
+            } else {
+                document.getElementById('metamasknotification').innerText = 'MetaMask is not installed';
+            }
+        }
+    </script>
+<button onclick="voteStatus()">Check Voting Status</button>
+<p id="status"></p>
+<p id="time"></p>
+<button onclick="connectMetamask()">Connect Metamask</button>
+<p id="metamasknotification"></p>
+</body>
+</html>
+        
+
+   
+</body>
+</html>
